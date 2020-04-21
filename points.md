@@ -1,9 +1,11 @@
 # multiproc
+
 ##我学到了什么
+作业内容及输入输出规范(https://docs.qq.com/doc/DREJnU3RFeW5haXhz)
 1. c语言命令行的基本使用
 2. fork的原理及使用
     1. fork两个返回值，父进程返回进程号，子进程返回0
-    2. 参考https://blog.csdn.net/kwinway/article/details/79633285，for循环中fork可能孩子生孙子，如何达到自己想要的效果
+    2. 参考(https://blog.csdn.net/kwinway/article/details/79633285)，for循环中fork可能孩子生孙子，如何达到自己想要的效果
 3. read，open，close等系统调用的使用
     1. 文件标识符
     2. 各个进程通过同一个文件描述符，得到open file table，进而得到inode，进行互相协作。
@@ -15,4 +17,4 @@
         1. 如果父进程很忙，那么可以用signal函数为SIGCHLD安装handler，因为子 进程结束后， 父进程会收到该信号，可以在handler中调用wait搜索回收。 
         2. 如果父进程不关心子进程什么时候结束， 那么可以用signal （SIGCHLD,SIG_IGN） 通知内核，自己对子进程的结束不感兴趣，那么 子进程结束后，内核会回收， 并不再给父进程发送信号。
      2. waitpid()函数  pid / options  提供了额外选项来控制waitpid，如WNOHANG，说明若pid指定的子进程没有结束，则 waitpid()函数返回0，不予以等待。若结束，则返回该子进程的ID。  waitpid()只有在处理完所有终止进程后才返回 
-     3. sigaction，参考了https://blog.csdn.net/weibo1230123/article/details/81411827
+     3. sigaction，参考了(https://blog.csdn.net/weibo1230123/article/details/81411827)
